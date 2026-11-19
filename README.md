@@ -2,7 +2,7 @@
 
 A clean, mobile-friendly web app for tracking income and expenses, built with **Next.js 16, React 19, TypeScript, Tailwind CSS v4 and Supabase**.
 
-The **live demo** opens instantly with six months of sample data, with no sign-up needed.
+**Live demo: https://tally-nine-khaki.vercel.app** — it opens instantly with six months of sample data, with no sign-up needed.
 
 ## Features
 
