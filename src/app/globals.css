@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f7f8fa;
+  --bg-soft: #eef0f4;
+  --panel: #ffffff;
+  --border: #e3e6ec;
+  --fg: #111827;
+  --muted: #6b7280;
+  --accent: #0f9f6e;
+  --accent-fg: #ffffff;
+  --accent-soft: #e3f6ee;
+  --income: #0f9f6e;
+  --income-soft: #e3f6ee;
+  --expense: #e1475a;
+  --expense-soft: #fdeaed;
+}
+
+.dark {
+  --bg: #0b0d12;
+  --bg-soft: #141821;
+  --panel: #12151c;
+  --border: #252a36;
+  --fg: #eceef3;
+  --muted: #9097a6;
+  --accent: #2fc58f;
+  --accent-fg: #06130d;
+  --accent-soft: #10291f;
+  --income: #2fc58f;
+  --income-soft: #10291f;
+  --expense: #f26b7c;
+  --expense-soft: #2d151a;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-panel: var(--panel);
+  --color-border: var(--border);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-income: var(--income);
+  --color-income-soft: var(--income-soft);
+  --color-expense: var(--expense);
+  --color-expense-soft: var(--expense-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Shared controls as Tailwind utilities, so regular utilities (w-auto, h-8, px-3…) can override them */
+@utility field {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 0.625rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  &:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.15s, opacity 0.15s, border-color 0.15s;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@utility btn-primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+  &:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--accent) 88%, black);
+  }
+}
+
+@utility btn-ghost {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--fg);
+  &:hover:not(:disabled) {
+    background: var(--bg-soft);
+  }
+}
+
+@utility btn-danger {
+  background: var(--expense);
+  color: #fff;
+}
+
+@utility card {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 1rem;
+}
+
+/* Recharts: no focus outline on click */
+.recharts-wrapper *:focus {
+  outline: none;
+}
